@@ -1,246 +1,517 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrokeNoMoney</title>
-  <style>
-    :root {
-      --primary: #1eff34;
-      --primary-dark: #2fb10b;
-      --background: #f4f7fb;
-      --text: #1f2933;
-      --muted: #52606d;
-      --surface: #ffffff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrokeNoMoney</title>
+    <style>
+        :root {
+            --primary: #22d45a;
+            --primary-dark: #108335;
+            --primary-light: rgba(34, 212, 90, 0.1);
+            --surface: #ffffff;
+            --surface-soft: rgba(255, 255, 255, 0.8);
+            --background: #0c0f16;
+            --background-alt: #111726;
+            --text: #eff2f7;
+            --muted: #b2bccd;
+            --accent: #58ffd6;
+            --shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
 
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background: linear-gradient(180deg, #fefefe 0%, var(--background) 100%);
-    }
+        body {
+            margin: 0;
+            font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: radial-gradient(circle at top right, rgba(34, 212, 90, 0.08), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(88, 255, 214, 0.08), transparent 55%),
+                linear-gradient(160deg, #05060b 0%, #0f172a 55%, #080b12 100%);
+            min-height: 100vh;
+        }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid rgba(79, 255, 30, 0.15);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(16px);
+            background: linear-gradient(120deg, rgba(12, 15, 22, 0.88), rgba(12, 15, 22, 0.6));
+            border-bottom: 1px solid rgba(34, 212, 90, 0.15);
+        }
 
-    .navbar {
-      margin: 0 auto;
-      max-width: 1100px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
+        .navbar {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
 
-    .logo {
-      font-size: 1.65rem;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 0.02em;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
 
-    nav ul {
-      display: flex;
-      gap: 1.25rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+        .logo::before {
+            content: "💸";
+            font-size: 1.4rem;
+        }
 
-    nav a {
-      font-weight: 600;
-      color: var(--muted);
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    }
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
-    nav a:hover,
-    nav a:focus {
-      color: var(--surface);
-      background: var(--primary);
-      box-shadow: 0 8px 20px rgba(30, 144, 255, 0.25);
-    }
+        nav a {
+            font-weight: 600;
+            color: var(--muted);
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.3s ease;
+        }
 
-    main {
-      margin: 0 auto;
-      max-width: 1100px;
-      padding: 4rem 1.5rem 5rem;
-      display: grid;
-      gap: 3rem;
-    }
+        nav a:hover,
+        nav a:focus {
+            color: var(--surface);
+            background: rgba(34, 212, 90, 0.16);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(34, 212, 90, 0.2);
+        }
 
-    section {
-      background: var(--surface);
-      border-radius: 18px;
-      padding: 2.5rem;
-      box-shadow: 0 25px 60px rgba(30, 144, 255, 0.12);
-      border: 1px solid rgba(30, 144, 255, 0.08);
-    }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(34, 212, 90, 0.4);
+            color: var(--accent);
+            background: rgba(34, 212, 90, 0.12);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
 
-    section h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: 2rem;
-      color: var(--primary-dark);
-    }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.6rem;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            color: var(--surface);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
 
-    .highlight {
-      font-weight: 600;
-      color: var(--primary);
-    }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(34, 212, 90, 0.35);
+        }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+        main {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 4.5rem 2rem 5rem;
+            display: grid;
+            gap: 4rem;
+        }
 
-    .feature-card {
-      padding: 1.5rem;
-      border-radius: 16px;
-      background: rgba(30, 144, 255, 0.08);
-      border: 1px solid rgba(30, 144, 255, 0.2);
-    }
+        section {
+            position: relative;
+            background: linear-gradient(160deg, rgba(19, 25, 39, 0.9) 0%, rgba(12, 15, 22, 0.95) 60%, rgba(12, 15, 22, 0.8) 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(34, 212, 90, 0.08);
+            overflow: hidden;
+        }
 
-    .feature-card h3 {
-      margin-top: 0;
-      color: var(--primary-dark);
-    }
+        section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            border: 1px solid rgba(88, 255, 214, 0.06);
+            mask: linear-gradient(#000, transparent 60%);
+        }
 
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0 0;
-      display: grid;
-      gap: 1rem;
-    }
+        section h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 2.3rem;
+            color: var(--accent);
+        }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1.25rem;
-      border-radius: 14px;
-      background: rgba(30, 144, 255, 0.1);
-      border: 1px solid rgba(30, 144, 255, 0.16);
-    }
+        section p {
+            color: var(--muted);
+            max-width: 70ch;
+        }
 
-    footer {
-      background: var(--surface);
-      text-align: center;
-      padding: 2rem 1.5rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(30, 144, 255, 0.15);
-    }
+        .hero {
+            display: grid;
+            gap: 2.75rem;
+        }
 
-    @media (max-width: 680px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+        .hero-content {
+            display: grid;
+            gap: 1.75rem;
+        }
 
-      section {
-        padding: 2rem;
-      }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.4rem);
+            line-height: 1.1;
+            font-weight: 700;
+        }
 
-      section h2 {
-        font-size: 1.75rem;
-      }
-    }
-  </style>
+        .hero-highlight {
+            color: var(--accent);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hero-card {
+            padding: 1.5rem;
+            border-radius: 18px;
+            background: rgba(17, 23, 38, 0.95);
+            border: 1px solid rgba(34, 212, 90, 0.1);
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .hero-card strong {
+            font-size: 1.2rem;
+            color: var(--surface);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+        }
+
+        .feature-card {
+            padding: 1.85rem;
+            border-radius: 20px;
+            background: linear-gradient(140deg, rgba(17, 23, 38, 0.9), rgba(12, 15, 22, 0.8));
+            border: 1px solid rgba(88, 255, 214, 0.08);
+            display: grid;
+            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 0;
+            background: radial-gradient(circle at top right, rgba(34, 212, 90, 0.22), transparent 55%);
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(34, 212, 90, 0.14);
+            display: grid;
+            place-items: center;
+            font-size: 1.35rem;
+        }
+
+        .feature-card h3 {
+            margin: 0;
+            color: var(--surface);
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(88, 255, 214, 0.12);
+            color: var(--accent);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 2.25rem;
+        }
+
+        .timeline {
+            border-left: 2px solid rgba(88, 255, 214, 0.18);
+            padding-left: 1.75rem;
+            display: grid;
+            gap: 1.75rem;
+        }
+
+        .timeline-step {
+            position: relative;
+            padding-left: 0.5rem;
+        }
+
+        .timeline-step::before {
+            content: "";
+            position: absolute;
+            top: 0.35rem;
+            left: -2.02rem;
+            width: 0.85rem;
+            height: 0.85rem;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--background);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2.75rem;
+        }
+
+        .contact-card {
+            background: rgba(17, 23, 38, 0.95);
+            border-radius: 18px;
+            padding: 1.75rem;
+            border: 1px solid rgba(34, 212, 90, 0.1);
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .contact-card strong {
+            color: var(--surface);
+        }
+
+        footer {
+            margin: 4rem auto 0;
+            max-width: 1200px;
+            text-align: center;
+            padding: 2.75rem 2rem 3.5rem;
+            color: var(--muted);
+        }
+
+        footer p {
+            margin: 0.5rem 0 0;
+        }
+
+        .footer-line {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(88, 255, 214, 0.35), transparent);
+            margin-bottom: 1.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            section {
+                padding: 2.25rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            main {
+                padding: 3.5rem 1.25rem 4rem;
+            }
+
+            section {
+                padding: 1.9rem 1.6rem;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
 <!-- Kopfbereich / Navigation -->
 <header>
-  <div class="navbar">
-    <div class="logo">BrokeNoMoney</div>
-    <nav>
-      <ul>
-        <li><a href="#home">Start</a></li>
-        <li><a href="#about">Über uns</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="navbar">
+        <div class="logo">BrokeNoMoney</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Start</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <!-- Hauptinhalt -->
 <main>
-  <section id="home">
-    <h2>Willkommen bei BrokeNoMoney</h2>
-    <p><span class="highlight">Finanzielle Freiheit</span> beginnt mit einem klaren Überblick. Mit BrokeNoMoney behältst du Ausgaben, Einnahmen und deine Ziele stets im Blick.</p>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Smarte Budgetplanung</h3>
-        <p>Verfolge deine Finanzen mit intuitiven Tools und hilfreichen Analysen, die auf deine Bedürfnisse zugeschnitten sind.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Ziele visualisieren</h3>
-        <p>Setze Prioritäten, erstelle Sparziele und beobachte in Echtzeit, wie du ihnen Schritt für Schritt näher kommst.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Community &amp; Tipps</h3>
-        <p>Lerne von der Community, teile Erfahrungen und finde Inspiration für deinen nachhaltigen Lebensstil.</p>
-      </div>
-    </div>
-  </section>
+    <section id="home" class="hero">
+        <span class="pill">Finanzen neu gedacht</span>
+        <div class="hero-content">
+            <h1 class="hero-title">Mehr Überblick. Mehr Gelassenheit. <span class="hero-highlight">Mehr Geld für dich.</span></h1>
+            <p>Mit BrokeNoMoney bekommst du das moderne Toolset, das deine Finanzen in Echtzeit sichtbar macht. Budgetiere smart,
+                spüre Einsparpotenziale auf und steuere deine Ziele mit Klarheit.</p>
+            <div class="hero-grid">
+                <div class="hero-card">
+                    <strong>Live-Dashboard</strong>
+                    <p>Automatisierte Reports für Einnahmen, Ausgaben und Sparquoten.</p>
+                </div>
+                <div class="hero-card">
+                    <strong>Persönliche Roadmap</strong>
+                    <p>Kleine Schritte mit großer Wirkung – passend zu deinem Lifestyle.</p>
+                </div>
+                <div class="hero-card">
+                    <strong>Community Support</strong>
+                    <p>Wissen und Motivation aus einer engagierten Spar-Community.</p>
+                </div>
+            </div>
+            <button class="cta-button">Jetzt loslegen</button>
+        </div>
+    </section>
 
-  <section id="about">
-    <h2>Über uns</h2>
-    <p>BrokeNoMoney ist ein Projekt von Studierenden, die eine zugängliche Finanzplattform für junge Menschen schaffen möchten. Wir kombinieren moderne Technologie mit alltagstauglichen Empfehlungen, damit Geldmanagement Spaß macht.</p>
-    <p>Unser Ansatz ist <span class="highlight">transparent, inklusiv und datenbasiert</span>. Gemeinsam gestalten wir Tools, die dir helfen, clevere Entscheidungen zu treffen – ganz ohne komplizierte Fachsprache.</p>
-  </section>
+    <section id="about">
+        <h2>Über uns</h2>
+        <p>BrokeNoMoney ist eine Initiative von Studierenden, die die Sprache junger Menschen spricht. Wir bauen eine Plattform,
+            die dich nicht nur informiert, sondern mitnimmt, motiviert und empowert. Finanzwissen darf nicht elitär sein.</p>
+        <div class="about-grid">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Smarte Budgetplanung</h3>
+                    <p>Analyse deiner Kontobewegungen, automatische Kategorisierung und Warnungen, wenn das Budget aus dem Ruder
+                        läuft.</p>
+                    <div class="tag-list">
+                        <span class="tag">Intuitiv</span>
+                        <span class="tag">Datensicher</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Ziele visualisieren</h3>
+                    <p>Von der ersten Reise bis zum Notgroschen: Visualisierungen zeigen dir in Echtzeit den Fortschritt deiner
+                        Ziele.</p>
+                    <div class="tag-list">
+                        <span class="tag">Gamification</span>
+                        <span class="tag">Motivation</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community &amp; Tipps</h3>
+                    <p>Teile Hacks, lass dich inspirieren und finde Accountability-Partner:innen auf Augenhöhe.</p>
+                    <div class="tag-list">
+                        <span class="tag">Gemeinsam</span>
+                        <span class="tag">Wachstum</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <h3>1. Transparent</h3>
+                    <p>Wir legen offen, wie wir arbeiten, welche Daten wir verwenden und welche Ziele wir verfolgen.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3>2. Inklusiv</h3>
+                    <p>Unsere Tools sind für alle Einkommensstufen gedacht – verständlich, barrierearm und wertschätzend.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3>3. Impact-orientiert</h3>
+                    <p>Jede neue Funktion wird mit der Community getestet und anhand echter Lebensrealitäten optimiert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2>Kontakt</h2>
-    <p>Du möchtest mehr erfahren oder Teil der Community werden? Wir freuen uns auf deine Nachricht.</p>
-    <ul class="contact-list">
-      <li class="contact-item">
-        📧 <strong>E-Mail:</strong> <a href="mailto:hallo@brokenomoney.de">hallo@brokenomoney.de</a>
-      </li>
-      <li class="contact-item">
-        💬 <strong>Discord:</strong> <a href="https://discord.gg/brokenomoney">discord.gg/brokenomoney</a>
-      </li>
-      <li class="contact-item">
-        📱 <strong>Instagram:</strong> <a href="https://instagram.com/brokenomoney">@brokenomoney</a>
-      </li>
-    </ul>
-  </section>
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Du möchtest mehr erfahren oder Teil der Community werden? Schreib uns und sichere dir early access, exklusive Events
+            und unseren monatlichen Newsletter.</p>
+        <div class="contact-wrapper">
+            <div class="contact-card">
+                <span class="pill">Support</span>
+                <strong>E-Mail</strong>
+                <a href="mailto:hallo@brokenomoney.de">hallo@brokenomoney.de</a>
+                <p>Wir antworten innerhalb von 24 Stunden auf deine Fragen.</p>
+            </div>
+            <div class="contact-card">
+                <span class="pill">Community</span>
+                <strong>Discord</strong>
+                <a href="https://discord.gg/brokenomoney">discord.gg/brokenomoney</a>
+                <p>Tritt Kanälen für Challenges, Sparziele und Accountability bei.</p>
+            </div>
+            <div class="contact-card">
+                <span class="pill">Updates</span>
+                <strong>Instagram</strong>
+                <a href="https://instagram.com/brokenomoney">@brokenomoney</a>
+                <p>Tägliche Impulse, Story-Formate und Einblicke hinter die Kulissen.</p>
+            </div>
+        </div>
+    </section>
 </main>
 
 <!-- Fußbereich -->
 <footer>
-  <p>© 2025 BrokeNoMoney – Alle Rechte vorbehalten.</p>
+    <div class="footer-line"></div>
+    <p>© 2025 BrokeNoMoney – Gemeinsam Richtung finanzielle Freiheit.</p>
 </footer>
 </body>
 </html>
