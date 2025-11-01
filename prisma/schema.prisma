@@ -10,7 +10,7 @@ generator client {
 }
 
 // Example data model
-model User {
+model Example {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   email     String   @unique

@@ -60,6 +60,29 @@ app.delete('/api/examples/:id', async (req, res) => {
   }
 });
 
+// Subscribe: save name + email
+app.post('/api/subscribe', async (req, res) => {
+  const { name, email } = req.body || {};
+  if (!email || typeof email !== 'string') {
+    return res.status(400).json({ error: 'email is required' });
+  }
+  try {
+    const record = await prisma.example.create({
+      data: {
+        email: email.trim().toLowerCase(),
+        name: name ? String(name).trim() : null,
+      },
+    });
+    res.status(201).json({ id: record.id, createdAt: record.createdAt });
+  } catch (error) {
+    if (error && error.code === 'P2002') {
+      return res.status(409).json({ error: 'email already exists' });
+    }
+    console.error('Failed to create record:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // ✅ Start API Server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
