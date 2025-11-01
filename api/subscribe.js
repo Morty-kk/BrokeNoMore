@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
+const { withAccelerate } = require('@prisma/extension-accelerate');
 
-const prisma = globalThis.prisma || new PrismaClient();
+const prisma =
+  globalThis.prisma || new PrismaClient().$extends(withAccelerate());
 if (process.env.NODE_ENV !== 'production') {
   globalThis.prisma = prisma;
 }
