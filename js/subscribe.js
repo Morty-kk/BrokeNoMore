@@ -22,7 +22,7 @@
       };
 
       if (!payload.email) {
-        setStatus('Bitte E‑Mail angeben.', '#b00020');
+        setStatus('Bitte E-Mail angeben.', '#b00020');
         return;
       }
 
@@ -34,7 +34,7 @@
         });
 
         if (resp.ok) {
-          setStatus('Danke! Du bist eingetragen. ✅', '#0b7');
+          setStatus('Danke! Du bist eingetragen. ?', '#0b7');
           form.reset();
         } else {
           const data = await resp.json().catch(() => ({}));
@@ -42,7 +42,7 @@
           setStatus(msg, '#b00020');
         }
       } catch (err) {
-        setStatus('Netzwerkfehler. Bitte später erneut.', '#b00020');
+        setStatus('Netzwerkfehler. Bitte sp�ter erneut.', '#b00020');
       }
     });
     return true;
@@ -57,4 +57,6 @@
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
+
+
 

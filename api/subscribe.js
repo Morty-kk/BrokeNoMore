@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const record = await prisma.example.create({
+    const record = await prisma.user.create({
       data: {
         email: email.trim().toLowerCase(),
         name: name ? String(name).trim() : null,
@@ -37,4 +37,3 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-

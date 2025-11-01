@@ -67,7 +67,7 @@ app.post('/api/subscribe', async (req, res) => {
     return res.status(400).json({ error: 'email is required' });
   }
   try {
-    const record = await prisma.example.create({
+    const record = await prisma.user.create({
       data: {
         email: email.trim().toLowerCase(),
         name: name ? String(name).trim() : null,
