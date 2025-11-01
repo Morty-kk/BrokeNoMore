@@ -1,47 +1,64 @@
 const { PrismaClient } = require('@prisma/client');
+const { withAccelerate } = require('@prisma/extension-accelerate');
 
-const prisma = globalThis.prisma || new PrismaClient();
-if (process.env.NODE_ENV !== 'production') {
-  globalThis.prisma = prisma;
+const prisma = global.prisma || new PrismaClient().$extends(withAccelerate());
+if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
+
+async function readJsonBody(req) {
+  if (req.body && typeof req.body === 'object') return req.body;
+  return await new Promise((resolve, reject) => {
+    let data = '';
+    req.on('data', (c) => (data += c));
+    req.on('end', () => {
+      if (!data) return resolve({});
+      try { resolve(JSON.parse(data)); } catch { reject(new Error('Invalid JSON')); }
+    });
+    req.on('error', reject);
+  });
 }
 
 module.exports = async (req, res) => {
-  switch (req.method) {
-    case 'GET':
-      try {
-        const examples = await prisma.example.findMany({
+  try {
+    switch (req.method) {
+      case 'GET': {
+        const users = await prisma.user.findMany({
           orderBy: { createdAt: 'desc' },
+          select: { id: true, createdAt: true, email: true, name: true },
         });
-        res.status(200).json(examples);
-      } catch (error) {
-        console.error('❌ Failed to fetch examples:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(200).json(users);
       }
-      break;
-    case 'POST': {
-      const { title, content } = req.body || {};
+      case 'POST': {
+        let email, name;
+        try {
+          const body = await readJsonBody(req);
+          ({ email, name } = body || {});
+        } catch {
+          return res.status(400).json({ error: 'Invalid JSON' });
+        }
 
-      if (!title) {
-        res.status(400).json({ error: 'title is required' });
-        return;
-      }
+        if (!email || typeof email !== 'string') {
+          return res.status(400).json({ error: 'email is required' });
+        }
 
-      try {
-        const example = await prisma.example.create({
-          data: {
-            title,
-            content: content ?? null,
-          },
-        });
-        res.status(201).json(example);
-      } catch (error) {
-        console.error('❌ Failed to create example:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        try {
+          const user = await prisma.user.create({
+            data: { email: email.trim().toLowerCase(), name: name ? String(name).trim() : null },
+            select: { id: true, createdAt: true, email: true, name: true },
+          });
+          return res.status(201).json(user);
+        } catch (error) {
+          if (error && error.code === 'P2002') {
+            return res.status(409).json({ error: 'email already exists' });
+          }
+          throw error;
+        }
       }
-      break;
+      default:
+        res.setHeader('Allow', ['GET', 'POST']);
+        return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
     }
-    default:
-      res.setHeader('Allow', ['GET', 'POST']);
-      res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+  } catch (e) {
+    console.error('api/examples', e);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };

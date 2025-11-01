@@ -1,30 +1,23 @@
 const { PrismaClient } = require('@prisma/client');
+const { withAccelerate } = require('@prisma/extension-accelerate');
 
-const prisma = globalThis.prisma || new PrismaClient();
-if (process.env.NODE_ENV !== 'production') {
-  globalThis.prisma = prisma;
-}
+const prisma = global.prisma || new PrismaClient().$extends(withAccelerate());
+if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
 
 module.exports = async (req, res) => {
-  if (req.method !== 'DELETE') {
-    res.setHeader('Allow', ['DELETE']);
-    res.status(405).json({ error: `Method ${req.method} Not Allowed` });
-    return;
-  }
-
-  const { id } = req.query;
-  const parsedId = Number(id);
-
-  if (!Number.isInteger(parsedId)) {
-    res.status(400).json({ error: 'id must be an integer' });
-    return;
-  }
-
   try {
-    await prisma.example.delete({ where: { id: parsedId } });
-    res.status(204).end();
-  } catch (error) {
-    console.error('❌ Failed to delete example:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    if (req.method !== 'DELETE') {
+      res.setHeader('Allow', ['DELETE']);
+      return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+    }
+
+    const id = Number(req.query.id);
+    if (!Number.isInteger(id)) return res.status(400).json({ error: 'id must be an integer' });
+
+    await prisma.user.delete({ where: { id } });
+    return res.status(204).end();
+  } catch (e) {
+    console.error('api/examples/[id]', e);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
