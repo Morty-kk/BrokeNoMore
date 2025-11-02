@@ -4,10 +4,14 @@
   "description": "Static frontend with Express + Prisma backend",
   "scripts": {
     "dev": "node server.js",
+    "start": "node server.js",
+
+    // nur fürs lokale Entwickeln:
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
-    "build": "npm run prisma:generate && npm run prisma:migrate",
-    "start": "node server.js"
+    "prisma:migrate": "prisma migrate dev",
+
+    // 👇 das ist wichtig für Vercel
+    "build": "npm run prisma:generate"
   },
   "dependencies": {
     "@prisma/client": "^6.18.0",
