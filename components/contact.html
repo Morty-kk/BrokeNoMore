@@ -1,41 +1,11 @@
-<section id="contact" class="section">
-    <p class="section-title">Kontakt</p>
-    <h2 class="section-subtitle">Sag <span>Hallo</span></h2>
-    <p class="lead">Du möchtest mehr erfahren oder Teil der Community werden? Wir freuen uns über jede Nachricht.</p>
-    <div class="grid contact-wrapper">
-        <article class="card">
-            <h4>E-Mail</h4>
-            <p>Wir antworten innerhalb von 24 Stunden auf deine Fragen.</p>
-            <a class="btn btn-outline" href="mailto:hallo@brokenomore.de">hallo@brokenomore.de</a>
-        </article>
-        <article class="card">
-            <h4>Discord</h4>
-            <p>Tritt Kanälen für Challenges, Sparziele und Accountability bei.</p>
-            <a class="btn btn-outline" href="https://discord.gg/brokenomore">discord.gg/brokenomore</a>
-        </article>
-        <article class="card">
-            <h4>Instagram</h4>
-            <p>Tägliche Impulse, Story-Formate und Einblicke hinter die Kulissen.</p>
-            <a class="btn btn-outline" href="https://instagram.com/brokenomore">@brokenomore</a>
-        </article>
-    </div>
+<form id="subscribe-form">
+  <label for="name">Name (optional)</label>
+  <input type="text" name="name" id="name" />
 
-    <hr style="margin: 2rem 0; opacity: .2;">
+  <label for="email">E-Mail</label>
+  <input type="email" name="email" id="email" required />
 
-    <div class="card" style="max-width: 560px; margin-inline: auto;">
-        <h4>Bleib auf dem Laufenden</h4>
-        <p>Trag dich ein – wir speichern deinen Namen und deine E‑Mail sicher in unserer Datenbank.</p>
-        <form id="signup-form" novalidate>
-            <div class="form-row" style="margin-bottom: .75rem;">
-                <label for="name">Name (optional)</label>
-                <input id="name" name="name" type="text" placeholder="Dein Name">
-            </div>
-            <div class="form-row" style="margin-bottom: .75rem;">
-                <label for="email">E‑Mail</label>
-                <input id="email" name="email" type="email" required placeholder="dein@mail.de">
-            </div>
-            <button class="btn" type="submit">Eintragen</button>
-            <p id="signup-status" style="margin-top: .75rem; font-size: .95rem;"></p>
-        </form>
-    </div>
-</section>
+  <button type="submit">Eintragen</button>
+
+  <p id="subscribe-error" style="color: red;"></p>
+</form>

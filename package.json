@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node server.js",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate": "prisma migrate deploy",
+    "build": "npm run prisma:generate && npm run prisma:migrate",
     "start": "node server.js"
   },
   "dependencies": {
