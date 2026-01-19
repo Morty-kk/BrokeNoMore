@@ -1,0 +1,58 @@
+/* Kurz: Styles für die Quizseite (Layout & Interaktion) */
+/* Styles for the Quiz page */
+.quiz-wrap{ padding: 3rem 0 8rem; display:flex; justify-content:center; }
+.quiz-root{ width: min(980px, 96%); }
+/* ensure root leaves space above the footer */
+.quiz-root{ margin-bottom: 2.5rem; }
+.quiz-card{ background: var(--card-surface); border: 2px solid var(--line); border-radius: 14px; padding: 1.25rem; box-shadow: 0 12px 0 var(--shadow-soft); }
+.quiz-main-card{ display:flex; flex-direction:column; gap: 1rem; align-items:stretch; }
+.quiz-header{ display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.quiz-progress{ font-weight:800; color: var(--muted); }
+.quiz-question{ font-size:1.35rem; font-weight:800; color:var(--ink); }
+.answers{ display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .8rem; }
+.answer-card{ background: var(--surface-2); border: 2px solid var(--line-2); border-radius: 12px; padding: .85rem; cursor: pointer; font-weight:700; text-align:center; transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background-color .12s ease; }
+.answer-card:hover{ transform: translateY(-6px); box-shadow: 0 8px 0 rgba(0,0,0,0.06); }
+.answer-card.selected{ outline: 3px solid color-mix(in srgb, var(--accent) 36%, transparent); }
+.answer-card.correct{ background: color-mix(in srgb, #CFF7D6 60%, var(--surface-2)); border-color: rgba(14,42,26,0.12); box-shadow: 0 12px 0 rgba(14,42,26,0.06); }
+.answer-card.wrong{ background: color-mix(in srgb, #FFD6D6 60%, var(--surface-2)); border-color: rgba(160,20,20,0.12); box-shadow: none; transform: translateY(0); }
+./* stronger saturated green for light theme correct state */
+html:not(.theme-dark) .answer-card.correct{
+	background: color-mix(in srgb, #28a745 48%, var(--surface-2));
+	border-color: rgba(14,42,26,0.16);
+	box-shadow: 0 10px 0 rgba(14,42,26,0.08);
+	color: rgba(4,36,18,0.98);
+}
+
+/* Light theme: make all unclicked answer cards light blue */
+html:not(.theme-dark) .answer-card{
+    background: color-mix(in srgb, #E6F4FF 86%, var(--surface-2));
+    border-color: color-mix(in srgb, var(--line-2) 60%, #cfe8ff 40%);
+}
+.quiz-actions{ display:flex; justify-content:flex-end; gap:.75rem; margin-top: .5rem; }
+.btn--gold{ background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 86%, white 14%), var(--accent)); color: #081214; border: 2px solid rgba(0,0,0,0.14); }
+.quiz-main-card.enter{ animation: quizIn .36s ease; }
+.quiz-main-card.exit{ animation: quizOut .28s ease forwards; }
+@keyframes quizIn{ from{ opacity:0; transform: translateY(14px) scale(.995);} to{ opacity:1; transform: none; } }
+@keyframes quizOut{ to{ opacity:0; transform: translateY(-12px) scale(.99); } }
+
+.final-card{ text-align:center; padding:2rem; margin-bottom:1rem; }
+.final-card h2{ margin:0 0 1rem 0; }
+/* Final card button layout */
+.final-actions{ display:flex; gap:0.75rem; justify-content:center; align-items:center; margin-top:1rem; }
+.final-actions .btn{ display:inline-block; min-width:120px; }
+.final-actions .btn--gold{ min-width:180px; }
+
+/* Light-theme overrides for clicked states: ensure green/red override the blue default */
+html:not(.theme-dark) .answer-card.correct{
+	background: #28a745; /* saturated green */
+	color: #042812;
+	border-color: rgba(12,70,28,0.2);
+	box-shadow: 0 10px 0 rgba(6,40,22,0.12);
+}
+
+html:not(.theme-dark) .answer-card.wrong{
+	background: #ff6b6b; /* clear red */
+	color: #3b0606;
+	border-color: rgba(120,20,20,0.18);
+	box-shadow: none;
+}

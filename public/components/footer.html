@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrokeNoMore</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Footer uses the site's color variables so it blends with the page
+           while staying visually separate with a subtle border and shadow. */
+        .footer {
+            /* base matches site's card/surface tones */
+            background: linear-gradient(180deg,
+                        rgba(255,255,255,0.6),
+                        rgba(255,255,255,0.12)),
+                      linear-gradient(135deg, var(--card-surface-2, #DFF6E1), var(--bg, #EAF6E7));
+            color: var(--ink, #0E2A1A);
+            padding: 40px 24px;
+            font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            border-top: 1px solid rgba(14,42,26,0.06);
+            box-shadow: 0 -8px 30px rgba(14,42,26,0.04), inset 0 2px 12px rgba(255,255,255,0.03);
+            backdrop-filter: blur(4px) saturate(120%);
+            background-size: 200% 200%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            text-align: left;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            color: var(--brand-2, #1F6E47);
+            margin-bottom: 8px;
+        }
+        /* Make the brand accent in the footer inherit the same color so it doesn't stand out */
+        .footer .brand-word--accent {
+            color: inherit;
+        }
+
+        .footer-heading {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: var(--brand, #2B8A57);
+            letter-spacing: 0.6px;
+        }
+
+        /* Dark mode: use gold accent for footer headings so they match header accent */
+        :root.theme-dark .footer-heading,
+        .theme-dark .footer-heading {
+            color: var(--accent, #FFC533);
+            text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer ul li {
+            margin: 6px 0;
+        }
+
+        .footer ul li a {
+            color: var(--muted, rgba(14,42,26,0.72));
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.25s ease, transform 0.18s ease;
+        }
+
+        .footer ul li a:hover {
+            color: var(--brand-2, #1F6E47);
+            transform: translateX(4px);
+        }
+
+        .copyright {
+            margin-top: 28px;
+            font-size: 0.9em;
+            text-align: center;
+            color: rgba(14,42,26,0.6);
+        }
+
+        /* Small screens: center content and reduce padding */
+        @media (max-width: 640px) {
+            .footer {
+                padding: 28px 16px;
+            }
+            .footer-grid { text-align: center; }
+        }
+        /* Dark mode: match card background and set headings to gold, body text to light green */
+        :root.theme-dark .footer,
+        .theme-dark .footer {
+            background: linear-gradient(180deg,
+                color-mix(in srgb, var(--card-surface, #0F3A27) 85%, black 15%),
+                var(--card-surface-2, #0E432C)
+            );
+            color: rgba(234,246,231,0.95);
+            border-top: 1px solid rgba(255,255,255,0.02);
+            box-shadow: 0 -6px 18px rgba(0,0,0,0.35);
+            backdrop-filter: none;
+        }
+
+        :root.theme-dark .footer-heading,
+        .theme-dark .footer-heading {
+            color: var(--accent, #FFC533);
+            text-shadow: 0 1px 0 rgba(0,0,0,0.45);
+        }
+
+        :root.theme-dark .footer ul li a,
+        .theme-dark .footer ul li a {
+            color: rgba(200, 235, 210, 0.95); /* light green for body text */
+        }
+
+        /* Darkmode: make copyright clearly visible */
+        :root.theme-dark .copyright,
+        .theme-dark .copyright {
+            color: #ffffff;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your content here -->
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+    <!-- Kurz: Footer‑Komponente (Links, Copyright, Social) -->
+                        <a class="brand" href="#home" aria-label="BrokeNoMore – Start">
+                        <span>BrokeNo</span><span class="brand-word--accent">More</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-heading">Home</div>
+                <ul>
+                    <li><a href="#home">Start</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-heading">Services</div>
+                <ul>
+                    <li><a href="#services">Überblick</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-heading">Preise</div>
+                <ul>
+                    <li><a href="#preise">Pakete</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-heading">Information</div>
+                <ul>
+                    <li><a href="#information">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-heading">About</div>
+                <ul>
+                    <li><a href="#about">Team & Mission</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-heading">Kontakt</div>
+                <ul>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-heading">Social</div>
+                <ul>
+                    <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">Linkedin</a></li>
+                    <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2025 BrokeNoMore, GmbH.</p>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <div id="chatbot-button" class="chatbot-button" aria-label="Chatbot öffnen">
+        <span class="chatbot-button__icon" aria-hidden="true">💬</span>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="chatbot" aria-live="polite">
+        <div id="chatbot-header" class="chatbot__header">Chatbot</div>
+        <div id="chatbot-messages" class="chatbot__messages">Willkommen! Wie kann ich Ihnen helfen?</div>
+        <div id="chatbot-input" class="chatbot__input">
+            <input type="text" id="chatbot-text" class="chatbot__text" placeholder="Nachricht eingeben...">
+            <button id="chatbot-send" class="chatbot__send">Senden</button>
+        </div>
+    </div>
+</body>
+</html>

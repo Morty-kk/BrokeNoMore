@@ -1,0 +1,47 @@
+/* Kurz: Styles für den Budget‑Check (Karten, Metriken, Tooltips) */
+/* Budget check specific styles */
+.budget-wrap{ padding: 2rem 0 6rem; display:flex; justify-content:center; }
+.budget-root{ width: min(1000px, 96%); }
+.budget-card{ background: var(--card-surface); border: 2px solid var(--line); border-radius: 12px; padding: 1.25rem; box-shadow: 0 10px 0 var(--shadow-soft); }
+.budget-card__head{ display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem; }
+.budget-card h2{ margin:0 0 .5rem 0; font-size:1.25rem; }
+.budget-form{ display:grid; grid-template-columns: 1fr 1fr; gap:1rem; }
+.budget-field{ display:flex; flex-direction:column; gap:.5rem; }
+.budget-field label{ font-weight:700; color:var(--muted); font-size:.95rem; }
+.budget-field input{ padding:.7rem .9rem; border-radius:10px; border:1px solid var(--line-2); background:var(--surface-2); font-weight:700; }
+.budget-actions{ display:flex; justify-content:flex-end; gap:.75rem; margin-top:1rem; }
+.budget-progress{ font-weight:800; color:var(--muted); }
+.summary-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:1rem; }
+.summary-item{ background: color-mix(in srgb, var(--card-surface) 94%, white 6%); padding:1rem; border-radius:10px; border:1px solid var(--line-2); }
+.result-positive{ color: #0a6b2f; font-weight:800; }
+.result-negative{ color: #a31b1b; font-weight:800; }
+.recommendations{ margin-top:1rem; }
+/* helper hint */
+.hint{ margin-top:.75rem; font-size:.95rem; }
+/* Result / status styling */
+.result-status{ display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+.result-status .icon{ font-size:1.8rem; }
+.result-status .status-title{ font-weight:900; font-size:1.15rem; }
+.result-status .status-desc{ color:var(--muted); font-size:0.95rem; }
+.metric-large{ text-align:center; padding:1.25rem; border-radius:12px; font-weight:900; font-size:1.6rem; }
+.metric-large.badge-good{ background: color-mix(in srgb, #e9f7ee 60%, transparent); border:1px solid #cfeed6; color:#075b2e; }
+.metric-large.badge-bad{ background: color-mix(in srgb, #fff1f1 60%, transparent); border:1px solid #f0c6c6; color:#6b0d0d; }
+.metric-medium{ padding:1rem; border-radius:10px; font-weight:800; }
+.metric-small{ padding:.75rem; border-radius:8px; font-weight:700; font-size:.95rem; }
+.badge-good{ color:#075b2e; background: color-mix(in srgb, #1db954 22%, transparent); border-radius:999px; padding:.2rem .5rem; }
+.badge-warn{ color:#6b5218; background: color-mix(in srgb, #ffc533 18%, transparent); border-radius:999px; padding:.2rem .5rem; }
+.badge-bad{ color:#6b0d0d; background: color-mix(in srgb, #ff6b6b 18%, transparent); border-radius:999px; padding:.2rem .5rem; }
+.badge-neutral{ color:var(--muted); background: color-mix(in srgb, #bdbdbd 18%, transparent); border-radius:999px; padding:.2rem .5rem; }
+.calc-tooltip{ background: var(--card-surface); border:1px solid var(--line-2); padding:.5rem .6rem; border-radius:8px; font-size:0.9rem; box-shadow:0 6px 20px rgba(0,0,0,0.08); z-index:9999; }
+.calc-tooltip .calc-line{ color:var(--muted); margin:0; padding:0; }
+.percent-hover{ cursor:help; text-decoration: underline dotted; }
+.percent-hover:focus{ outline: 2px solid color-mix(in srgb, var(--primary) 30%, transparent); border-radius:4px; }
+.next-step{ margin-top:1rem; padding:1rem; border-radius:10px; background: color-mix(in srgb, var(--card-surface) 92%, white 8%); border:1px solid var(--line-2); }
+.result-layout{ display:grid; grid-template-columns: 1fr; gap:1rem; }
+@media(min-width:900px){ .result-layout{ grid-template-columns: 1fr 1fr; } .metric-large{ grid-column: 1 / -1; } }
+/* Mobile */
+@media (max-width:720px){
+    .budget-form{ grid-template-columns: 1fr; }
+    .summary-grid{ grid-template-columns: 1fr; }
+    .budget-card{ padding:1rem; }
+}

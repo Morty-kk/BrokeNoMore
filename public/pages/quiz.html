@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- Kurz: Quizseite zu Finanzmythen (Interaktive Fragen) -->
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiz — Finanzmythen</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/include.js" defer></script>
+</head>
+<body>
+    <div data-include="../components/header.html"></div>
+
+    <main class="container">
+        <section class="section">
+            <div class="section-head">
+                <div class="eyebrow">Quiz</div>
+                <h1 class="h2">Finanzmythen-Check</h1>
+                <p class="muted">Teste dein Wissen in 5 kurzen Fragen — schnell, informativ und ohne Druck.</p>
+            </div>
+
+            <section class="section quiz-section">
+                <div class="quiz-wrap">
+                    <div id="quiz-root" class="quiz-root">
+                        <!-- JS will render quiz here -->
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div data-include="../components/footer.html"></div>
+
+    <script src="../js/quiz.js"></script>
+</body>
+</html>

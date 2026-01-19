@@ -1,0 +1,23 @@
+{
+  "name": "projekt-brokenomore",
+  "private": true,
+  "scripts": {
+    "postinstall": "prisma generate",
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "dev:server": "node dev-server.js",
+    "dev:studio": "prisma studio --port 5555 --hostname 0.0.0.0",
+    "dev:all": "concurrently -k -n SERVER,STUDIO -c blue,green \"npm:dev:server\" \"npm:dev:studio\""
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "projekt-brokenomore": "file:"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prisma": "^6.19.2"
+  }
+}

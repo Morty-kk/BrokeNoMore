@@ -1,0 +1,60 @@
+<!-- Kurz: Kontakt‑Bereich und Modal (CTA + Auth Formulare) -->
+<section id="kontakt" class="section section--cta">
+    <div class="container cta">
+        <div class="cta-panel">
+            <div>
+                <div class="eyebrow">Let’s go</div>
+                <h2 class="h2">Mach Schluss mit dem Kontoleer-Gefühl.</h2>
+                <p class="muted">Kleine Ausgaben hier, kleine Abos da – und plötzlich ist alles weg. Wir helfen dir, den Überblick zu behalten.</p>
+                <div class="cta-actions">
+                    <a class="btn btn--primary" href="#services">Jetzt starten</a>
+                    <a class="btn btn--ghost" href="#information">Mehr erfahren</a>
+                </div>
+            </div>
+            <div class="cta-art" aria-hidden="true">
+                <svg viewBox="0 0 420 260" width="420" height="260" role="img" focusable="false">
+                    <rect x="18" y="18" width="384" height="224" rx="26" fill="#DFF6E1" stroke="#1B3A2A" stroke-width="3"/>
+                    <path d="M90 175c20-32 52-50 96-50 54 0 84 20 106 54" fill="none" stroke="#1B3A2A" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="168" cy="112" r="10" fill="#1B3A2A"/>
+                    <circle cx="236" cy="112" r="10" fill="#1B3A2A"/>
+                    <rect x="86" y="56" width="248" height="30" rx="12" fill="#FFFFFF" opacity="0.8"/>
+                    <rect x="86" y="92" width="198" height="16" rx="8" fill="#FFFFFF" opacity="0.65"/>
+                    <rect x="86" y="200" width="128" height="34" rx="14" fill="#FFC533" stroke="#1B3A2A" stroke-width="3"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Kontakt-Modal (öffnet Anmelde-/Registrierformular) -->
+<div id="contact-modal" class="contact-modal" aria-hidden="true">
+    <div class="contact-modal__backdrop" data-contact-close></div>
+    <div class="contact-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <button class="contact-modal__close" type="button" data-contact-close aria-label="Schließen">×</button>
+        <h3 id="contact-modal-title" class="h3">Loslegen — Registrieren oder Anmelden</h3>
+        <p class="muted">Wähle Registrieren (kostenlos) oder melde dich an, wenn du bereits ein Konto hast.</p>
+
+        <div class="auth-choices">
+            <button class="btn btn--ghost" type="button" data-auth-show="login">Anmelden</button>
+        </div>
+
+        <form class="auth-form auth-form--register" data-register-form style="display:none;" aria-hidden="true">
+            <label class="contact-form__label">Name<input class="contact-form__input" name="name" required></label>
+            <label class="contact-form__label">E-Mail<input class="contact-form__input" type="email" name="email" required></label>
+            <label class="contact-form__label">Passwort<input class="contact-form__input" type="password" name="password" required></label>
+            <div class="contact-form__actions">
+                <button class="btn btn--ghost" type="button" data-contact-close>Abbrechen</button>
+                <button class="btn btn--primary" type="submit">Registrieren</button>
+            </div>
+        </form>
+
+        <form class="auth-form auth-form--login" data-login-form style="display:none;" aria-hidden="true">
+            <label class="contact-form__label">E-Mail<input class="contact-form__input" type="email" name="email" required></label>
+            <label class="contact-form__label">Passwort<input class="contact-form__input" type="password" name="password" required></label>
+            <div class="contact-form__actions">
+                <button class="btn btn--ghost" type="button" data-contact-close>Abbrechen</button>
+                <button class="btn btn--primary" type="submit">Anmelden</button>
+            </div>
+        </form>
+    </div>
+</div>

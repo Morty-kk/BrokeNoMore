@@ -1,0 +1,27 @@
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment
+.env
+.env.*
+
+# Prisma
+prisma/dev.db
+
+# Editor
+.vscode/
+
+# Misc
+deno.lock
+dev-server.log
+prisma-studio.log
+
+# Local logs and IDE/venv
+static-server.log
+.idea/
+.venv/

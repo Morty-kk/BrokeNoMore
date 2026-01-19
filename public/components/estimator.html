@@ -1,0 +1,73 @@
+<section id="estimator" class="section section--estimator" data-estimator>
+    <div class="container estimator">
+        <!-- Kurz: Mini‑Rechner/Estimator Komponente (kleine Spar‑Rechner) -->
+        <div class="section-head">
+            <div class="eyebrow">Schnell-Check</div>
+            <h2 class="h2">Wie viel Spielraum bleibt dir pro Monat?</h2>
+            <p class="muted">Grobe Schätzung auf Basis von Summen – ideal für den ersten Überblick.</p>
+        </div>
+
+        <div class="estimator-grid">
+            <div class="estimator-form">
+                <label class="estimator-field">
+                    <span>Monatliches Einkommen</span>
+                    <div class="input-wrap">
+                        <input
+                            type="text"
+                            inputmode="decimal"
+                            autocomplete="off"
+                            placeholder="z.B. 950 oder 1.250"
+                            data-estimator-income
+                        />
+                        <span class="unit">€</span>
+                    </div>
+                </label>
+
+                <label class="estimator-field">
+                    <span>Monatliche Ausgaben</span>
+                    <div class="input-wrap">
+                        <input
+                            type="text"
+                            inputmode="decimal"
+                            autocomplete="off"
+                            placeholder="z.B. 720 oder 1.000"
+                            data-estimator-expenses
+                        />
+                        <span class="unit">€</span>
+                    </div>
+                </label>
+
+                <label class="estimator-field">
+                    <span>Sparziel (Prozent)</span>
+                    <div class="input-wrap">
+                        <input
+                            type="text"
+                            inputmode="decimal"
+                            autocomplete="off"
+                            value="20"
+                            data-estimator-target
+                        />
+                        <span class="unit">%</span>
+                    </div>
+                </label>
+
+                <div class="estimator-actions">
+                    <button class="btn btn--ghost" type="button" data-estimator-reset>Zurücksetzen</button>
+                    <a class="btn btn--secondary" href="#services">Zur detaillierten Berechnung</a>
+                </div>
+
+                <p class="estimator-note">
+                    Das Ergebnis ist nur geschätzt. Für Kategorien, Diagramme & Spartipps nutze den Finanzcheck.
+                </p>
+            </div>
+
+            <div class="estimator-result" aria-live="polite" data-estimator-result>
+                <div class="estimator-result__title">Monatlicher Spielraum</div>
+                <div class="estimator-result__value" data-estimator-savings>0 €</div>
+                <div class="estimator-result__sub" data-estimator-rate>0 % Sparquote vom Einkommen</div>
+                <div class="estimator-result__sub" data-estimator-target-display>20 % Zielbetrag: 0 €</div>
+                <div class="estimator-result__hint" data-estimator-hint></div>
+            </div>
+        </div>
+    </div>
+</section>

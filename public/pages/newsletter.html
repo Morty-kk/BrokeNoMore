@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- Kurz: Newsletter-Landingpage (Anmeldung & Teaser) -->
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter & Neuigkeiten – BrokeNoMore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/include.js" defer></script>
+</head>
+<body>
+<div data-include="../components/header.html"></div>
+<main>
+    <section class="section section--blog">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Newsletter</div>
+                <h1 class="h2">Tägliche Neuigkeiten für deinen Finanz‑Alltag</h1>
+                <p class="muted">Kurze Updates im Newsletter‑Stil – verständlich, kompakt und sofort anwendbar.</p>
+            </div>
+
+            <div class="newsletter-panel">
+                <div>
+                    <div class="eyebrow">Heute im Fokus</div>
+                    <h2 class="h3">Mindestlohn & Nettogehalt: Was unterm Strich bleibt</h2>
+                    <p class="muted">Wie Steuern, Abgaben und Freibeträge dein Netto beeinflussen – mit Beispielrechner und Tipps.</p>
+                </div>
+                <div class="newsletter-actions">
+                    <a class="btn btn--secondary" href="./mindestlohn-nettogehalt.html">Zum Artikel</a>
+                    <a class="btn btn--ghost" href="#newsletter-form">Newsletter abonnieren</a>
+                </div>
+            </div>
+
+            <div class="cards-grid news-grid">
+                <article class="card news-card">
+                    <div class="news-meta">
+                        <span class="pill pill--soft">Update</span>
+                        <span class="muted">Täglich · 3 Min</span>
+                    </div>
+                    <h3 class="h3 news-title">Mindestlohn & Nettogehalt: Was unterm Strich bleibt</h3>
+                    <p class="muted news-excerpt">Netto verstehen: Steuerklasse, Abgaben und Freibeträge in einem klaren Überblick.</p>
+                    <a class="text-link" href="./mindestlohn-nettogehalt.html">Weiterlesen</a>
+                </article>
+
+                <article class="card news-card">
+                    <div class="news-meta">
+                        <span class="pill pill--soft">Budget</span>
+                        <span class="muted">Heute · 2 Min</span>
+                    </div>
+                    <h3 class="h3 news-title">Sparziel für Februar: 20‑Regel richtig nutzen</h3>
+                    <p class="muted news-excerpt">So setzt du ein realistisches Sparziel und bleibst trotz Freizeit‑Ausgaben im Plan.</p>
+                    <a class="text-link" href="./sparziele.html">Weiterlesen</a>
+                </article>
+
+                <article class="card news-card">
+                    <div class="news-meta">
+                        <span class="pill pill--soft">Finanzfallen</span>
+                        <span class="muted">Gestern · 4 Min</span>
+                    </div>
+                    <h3 class="h3 news-title">Kosten, die sich heimlich verdoppeln</h3>
+                    <p class="muted news-excerpt">Streaming, Apps, Lieferdienste: Diese Posten unterschätzt man am häufigsten.</p>
+                    <a class="text-link" href="./finanzfallen.html">Weiterlesen</a>
+                </article>
+
+                <article class="card news-card">
+                    <div class="news-meta">
+                        <span class="pill pill--soft">Tools</span>
+                        <span class="muted">Diese Woche · 3 Min</span>
+                    </div>
+                    <h3 class="h3 news-title">Budget‑Check in 5 Minuten</h3>
+                    <p class="muted news-excerpt">Schnell‑Check starten, Ausgaben ordnen, erste Aha‑Momente sichern.</p>
+                    <a class="text-link" href="./budget-check.html">Weiterlesen</a>
+                </article>
+            </div>
+
+            <div id="newsletter-form" class="newsletter-panel newsletter-panel--form">
+                <div>
+                    <div class="eyebrow">Newsletter</div>
+                    <h2 class="h3">Tägliche Tipps direkt in dein Postfach</h2>
+                    <p class="muted">Kurz & klar – maximal 2 Minuten Lesezeit, immer mit einem konkreten Praxistipp.</p>
+                </div>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <label class="newsletter-field">
+                        <span class="muted">E‑Mail</span>
+                        <div class="input-wrap">
+                            <input type="email" placeholder="deinname@mail.de" required>
+                        </div>
+                    </label>
+                    <button class="btn btn--primary" type="submit">Jetzt abonnieren</button>
+                </form>
+            </div>
+
+            <div class="center" style="margin-top:1.5rem">
+                <a class="btn btn--secondary" href="../index.html#information">Zurück zur Übersicht</a>
+            </div>
+        </div>
+    </section>
+</main>
+<div data-include="../components/footer.html"></div>
+</body>
+</html>

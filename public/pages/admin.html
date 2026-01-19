@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- Kurz: Admin‑UI (zeigt Kontakte & Zahlungen; lokal für Entwicklung) -->
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin – Datenbankeinträge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/include.js" defer></script>
+    <script src="../js/admin.js" defer></script>
+</head>
+<body>
+<div data-include="../components/header.html"></div>
+<main>
+    <section class="section section--services">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Admin</div>
+                <h1 class="h2">Datenbank‑Einträge (Prisma)</h1>
+                <p class="muted">Nur lokal verwenden. Daten werden automatisch geladen.</p>
+            </div>
+
+            <div class="card" style="margin-bottom:1.5rem">
+                <div class="card-top"><span class="pill pill--soft">Zugriff</span></div>
+                <p class="muted" style="margin:.25rem 0 0">Daten werden automatisch geladen (lokal).</p>
+                <div id="admin-status" class="muted" style="margin-top:.75rem"></div>
+            </div>
+
+            <div class="card" style="margin-bottom:1.5rem">
+                <div class="card-top"><span class="pill pill--soft">Kontakte</span></div>
+                <div class="table-wrap" style="overflow:auto">
+                    <table class="table" style="width:100%;border-collapse:collapse">
+                        <thead>
+                        <tr>
+                            <th style="text-align:left;padding:.5rem 0">Datum</th>
+                            <th style="text-align:left;padding:.5rem 0">Name</th>
+                            <th style="text-align:left;padding:.5rem 0">E‑Mail</th>
+                            <th style="text-align:left;padding:.5rem 0">Nachricht</th>
+                        </tr>
+                        </thead>
+                        <tbody id="contacts-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top"><span class="pill pill--soft">Zahlungen</span></div>
+                <div class="table-wrap" style="overflow:auto">
+                    <table class="table" style="width:100%;border-collapse:collapse">
+                        <thead>
+                        <tr>
+                            <th style="text-align:left;padding:.5rem 0">Datum</th>
+                            <th style="text-align:left;padding:.5rem 0">Inhaber</th>
+                            <th style="text-align:left;padding:.5rem 0">Letzte 4</th>
+                            <th style="text-align:left;padding:.5rem 0">Ablauf</th>
+                        </tr>
+                        </thead>
+                        <tbody id="payments-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<div data-include="../components/footer.html"></div>
+</body>
+</html>

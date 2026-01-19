@@ -1,0 +1,120 @@
+<!-- Kurz: Pricing‑Komponente (Preistafeln und CTA) -->
+<section id="preise" class="section section--pricing">
+    <div class="container">
+        <div class="section-head">
+            <div class="eyebrow">Preise</div>
+            <h2 class="h2">Das passende Paket für deinen Start</h2>
+            <p class="muted">Fürs Projekt: Inhalte sind Platzhalter – Struktur & Styling sind wie im Pitch gedacht.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <article class="price-card">
+                <div class="price-top">
+                    <h3 class="h3">Starter</h3>
+                    <div class="price">0€ <span class="muted">/ Monat</span></div>
+                </div>
+                <ul class="checklist">
+                    <li>Budget-Quickcheck</li>
+                    <li>1 Sparziel</li>
+                    <li>Basis-Tipps</li>
+                </ul>
+                <button class="btn btn--secondary" type="button" data-register-open data-plan-starter data-plan-id="starter">Loslegen</button>
+            </article>
+
+            <article class="price-card price-card--featured">
+                <div class="badge">Empfohlen</div>
+                <div class="price-top">
+                    <h3 class="h3">Plus</h3>
+                    <div class="price">4,99€ <span class="muted">/ Monat</span></div>
+                </div>
+                <ul class="checklist">
+                    <li>Budget-Plan & Kategorien</li>
+                    <li>Unlimitierte Sparziele</li>
+                    <li>Finanzfallen-Scanner</li>
+                </ul>
+                <button class="btn btn--primary" type="button" data-payment-open data-plan="Plus (4,99€ / Monat)" data-primary-cta data-plan-id="plus">Jetzt starten</button>
+                <p class="muted" style="margin-top:.6rem;font-size:.9rem;" data-login-hint>Bereits ein Konto? <a href="#login" class="link" data-register-open data-auth-show="login">Hier zum Login</a></p>
+            </article>
+
+            <article class="price-card">
+                <div class="price-top">
+                    <h3 class="h3">Pro</h3>
+                    <div class="price">9,99€ <span class="muted">/ Monat</span></div>
+                </div>
+                <ul class="checklist">
+                    <li>Routinen & Challenges</li>
+                    <li>Auswertung & Insights</li>
+                    <li>Priorisierter Support</li>
+                </ul>
+                <button class="btn btn--secondary" type="button" data-payment-open data-plan="Pro (9,99€ / Monat)" data-plan-id="pro">Upgrade</button>
+            </article>
+        </div>
+
+        <div id="payment-modal" class="payment-modal" aria-hidden="true">
+            <div class="payment-modal__backdrop" data-payment-close></div>
+            <div class="payment-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title">
+                <button class="payment-modal__close" type="button" data-payment-close aria-label="Abbrechen">×</button>
+                <h3 id="payment-modal-title" class="h3">Zahlungsdaten</h3>
+                <p class="muted" data-payment-plan-label>Plan: –</p>
+
+                <form class="payment-form">
+                    <label class="payment-form__label">
+                        Karteninhaber
+                        <input class="payment-form__input" type="text" name="cardName" placeholder="Max Mustermann" required>
+                    </label>
+                    <label class="payment-form__label">
+                        Kartennummer
+                        <input class="payment-form__input" type="text" name="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" required>
+                    </label>
+                    <div class="payment-form__row">
+                        <label class="payment-form__label">
+                            Ablaufdatum
+                            <input class="payment-form__input" type="text" name="cardExpiry" inputmode="numeric" placeholder="MM/JJ" required>
+                        </label>
+                        <label class="payment-form__label">
+                            CVC
+                            <input class="payment-form__input" type="text" name="cardCvc" inputmode="numeric" placeholder="123" maxlength="3" required>
+                        </label>
+                    </div>
+                    <div class="payment-form__actions">
+                        <button class="btn btn--ghost" type="button" data-payment-close>Abbrechen</button>
+                        <button class="btn btn--primary" type="submit">Zahlung starten</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div id="register-modal" class="register-modal" aria-hidden="true">
+            <div class="register-modal__backdrop" data-register-close></div>
+            <div class="register-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+                <button class="register-modal__close" type="button" data-register-close aria-label="Schließen">×</button>
+                <h3 id="register-modal-title" class="h3">Loslegen — Registrieren oder Anmelden</h3>
+                <p class="muted">Wähle Registrieren (kostenlos) oder Melde dich an, wenn du bereits ein Konto hast.</p>
+
+                <div class="auth-choices">
+                    <button class="btn btn--ghost" type="button" data-auth-show="register">Registrieren</button>
+                    <button class="btn btn--ghost" type="button" data-auth-show="login">Anmelden</button>
+                </div>
+
+                <form class="auth-form auth-form--register" data-register-form style="display:none;" aria-hidden="true">
+                    <label class="contact-form__label">Name<input class="contact-form__input" name="name" required></label>
+                    <label class="contact-form__label">E-Mail<input class="contact-form__input" type="email" name="email" required></label>
+                    <label class="contact-form__label">Passwort<input class="contact-form__input" type="password" name="password" required></label>
+                    <div class="contact-form__actions">
+                        <button class="btn btn--ghost" type="button" data-register-close>Abbrechen</button>
+                        <button class="btn btn--primary" type="submit">Registrieren</button>
+                    </div>
+                </form>
+
+                <form class="auth-form auth-form--login" data-login-form style="display:none;" aria-hidden="true">
+                    <label class="contact-form__label">E-Mail<input class="contact-form__input" type="email" name="email" required></label>
+                    <label class="contact-form__label">Passwort<input class="contact-form__input" type="password" name="password" required></label>
+                    <div class="contact-form__actions">
+                        <button class="btn btn--ghost" type="button" data-register-close>Abbrechen</button>
+                        <button class="btn btn--primary" type="submit">Anmelden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
